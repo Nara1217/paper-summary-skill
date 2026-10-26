@@ -20,6 +20,28 @@ downloads the arXiv e-print source first, so:
 
 PDF and web extraction are the fallbacks, not the default path.
 
+## Biomedical papers (PubMed / PMC / bioRxiv / medRxiv)
+
+Life-science papers rarely live on arXiv, so the same idea is applied to their
+**JATS full-text XML** — the structured source that PubMed Central and
+bioRxiv/medRxiv publish:
+
+| Input | Source tried, in order |
+|---|---|
+| `PMC6483969`, PMC URL | PMC open-access package (XML + original figures) → Europe PMC full-text XML |
+| `PMID:31043725`, pubmed URL, bare number | Europe PMC lookup → the PMC paths above → abstract only |
+| DOI (`10.xxxx/...`) | Europe PMC lookup → PMC paths → the publisher page |
+| bioRxiv / medRxiv DOI or URL | bioRxiv API JATS XML + figures → preprint PDF → abstract only |
+| local PDF with a DOI | the matching open JATS full text, **only if the title matches** → the PDF itself |
+
+The XML keeps rendered labels (`Figure 2`, `Table 1`), table cells as text (so
+`verify.py` can check table numbers) and a structured reference list. When a
+paper is not open access only the abstract is ingested, and the skill asks for
+the PDF instead of summarising from the abstract. Preprints that have since
+been published are flagged. These papers use the `bio` domain checklist
+(model system, biological vs. technical replicates, controls, statistics,
+clinical design, translational relevance).
+
 ## Install
 
 In Claude Code:
@@ -53,6 +75,8 @@ Once installed, just ask Claude Code:
 
 ```
 이 논문 요약해줘 https://arxiv.org/abs/1706.03762
+PMID 31043725 정리해줘
+https://www.biorxiv.org/content/10.1101/2020.03.22.002386v1 요약해줘
 summarize arxiv 2005.14165
 (drop a PDF) 이거 정리해줘
 ```
@@ -62,7 +86,8 @@ Output lands in a per-paper folder in your current directory:
 ```
 attention-is-all-you-need/
 ├── manifest.json     # what was ingested, and how
-├── source/           # the paper's .tex / .pdf
+├── source/           # the paper's .tex / .pdf / JATS .xml
+├── fulltext.md       # JATS ingests: the paper as text (+ references.txt)
 ├── figures/          # extracted figures, normalized to PNG
 ├── summary.md        # the deliverable
 └── summary.pdf       # typeset via pandoc → typst
@@ -118,6 +143,8 @@ verify: 7 number(s) checked, 1 not found in source
   and systematics vs. EFT parameter space vs. lattice ensembles)
 - **ai** — architecture, training setup, compute, ablations, reproducibility
 - **physics** — regime of validity, governing equations, uncertainties
+- **bio** — model system, replicates, controls, statistics, clinical design,
+  translational relevance (PubMed / PMC / bioRxiv / medRxiv, arXiv q-bio)
 - **general** — claim scope, evidence type, threats to validity
 
 ## Development
@@ -130,7 +157,7 @@ paper-summary-skill/
 └── skills/paper-summary/
     ├── SKILL.md             # the skill itself
     ├── domains/             # per-field supplement checklists
-    ├── scripts/             # ingest.py, verify.py, render_pdf.sh, setup.sh
+    ├── scripts/             # ingest.py, jats.py, verify.py, render_pdf.sh, setup.sh
     └── tests/
 ```
 
