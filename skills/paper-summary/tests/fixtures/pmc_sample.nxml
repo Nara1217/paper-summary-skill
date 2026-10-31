@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.2 20190208//EN" "JATS-archivearticle1.dtd">
+<article xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mml="http://www.w3.org/1998/Math/MathML" article-type="research-article">
+  <front>
+    <journal-meta>
+      <journal-title-group><journal-title>Test Journal of Biochemistry</journal-title></journal-title-group>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="pmid">31043725</article-id>
+      <article-id pub-id-type="pmc">6483969</article-id>
+      <article-id pub-id-type="doi">10.1234/tjb.2019.0042</article-id>
+      <title-group><article-title>Kinase X inhibition reduces tumour growth in a mouse xenograft model</article-title></title-group>
+      <contrib-group>
+        <contrib contrib-type="author"><name><surname>Kim</surname><given-names>Nara</given-names></name></contrib>
+        <contrib contrib-type="author"><name><surname>Park</surname><given-names>Taeyoon</given-names></name></contrib>
+        <contrib contrib-type="author"><collab>The Test Consortium</collab></contrib>
+      </contrib-group>
+      <pub-date pub-type="epub"><day>2</day><month>5</month><year>2019</year></pub-date>
+      <abstract>
+        <sec><title>Background</title><p>Kinase X is overexpressed in 62&nbsp;% of tumours.</p></sec>
+        <sec><title>Results</title><p>Inhibitor KX-7 reduced tumour volume by 48.3% (<italic>p</italic> &lt; 0.001).</p></sec>
+      </abstract>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <label>1</label><title>Introduction</title>
+      <p>Kinase X phosphorylates substrate Y <xref ref-type="bibr" rid="R1">[1]</xref>. Its K<sub>m</sub> is 2.5 &#x003bc;M and expression rises 10<sup>3</sup>-fold.</p>
+    </sec>
+    <sec id="s2">
+      <label>2</label><title>Results</title>
+      <sec id="s2.1">
+        <label>2.1</label><title>KX-7 inhibits tumour growth</title>
+        <p>Mice (n = 12 per group) received KX-7 &ndash; see <xref ref-type="fig" rid="F1">Figure 1</xref>.</p>
+        <fig id="F1" position="float">
+          <label>Figure 1</label>
+          <caption><title>Tumour volume over time.</title><p>Mean &#xb1; SEM, n = 12.</p></caption>
+          <graphic xlink:href="tjb-42-g001"/>
+        </fig>
+        <table-wrap id="T1">
+          <label>Table 1</label>
+          <caption><p>IC50 values.</p></caption>
+          <table>
+            <thead><tr><th>Compound</th><th>IC<sub>50</sub> (nM)</th></tr></thead>
+            <tbody><tr><td>KX-7</td><td>14.2</td></tr><tr><td>Control</td><td>&gt;10,000</td></tr></tbody>
+          </table>
+          <table-wrap-foot><p>Measured in triplicate.</p></table-wrap-foot>
+        </table-wrap>
+        <disp-formula id="E1"><label>(1)</label><alternatives><tex-math>V = \frac{L W^2}{2}</tex-math></alternatives></disp-formula>
+      </sec>
+    </sec>
+  </body>
+  <back>
+    <ack><title>Acknowledgements</title><p>We thank the animal facility.</p></ack>
+    <ref-list>
+      <ref id="R1"><label>1</label><element-citation publication-type="journal">
+        <person-group person-group-type="author"><name><surname>Lee</surname><given-names>S</given-names></name></person-group>
+        <article-title>Substrate Y is a target of Kinase X</article-title><source>Cell Rep</source><year>2015</year>
+      </element-citation></ref>
+      <ref id="R2"><label>2</label><mixed-citation>Choi J. A mixed citation. Nature. 2017;541:100-105.</mixed-citation></ref>
+    </ref-list>
+  </back>
+</article>
