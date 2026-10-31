@@ -107,11 +107,12 @@ input → ingest.py → [model reads + writes] → verify.py → render_pdf.sh
 |---|---|
 | 1. Ingest | `ingest.py` resolves the input and writes `manifest.json` |
 | 2. Read | Two passes: skim for structure, then ground every claim |
-| 3. Domain | Apply the field-specific checklist from `domains/` |
-| 4. Write | `summary.md` from a fixed 10-section template |
-| 5. Verify | `verify.py` traces every number back to the source |
-| 6. Render | `md → typ → pdf` |
-| 7. Report | Paths, ingest method, warnings, accepted exceptions |
+| 3. Background | A 배경지식 primer on the 4–8 key entities the paper assumes (cell types, molecules, drugs, prior models): what each is, its normal role, its role in the disease or setting — background facts tagged `(배경)` |
+| 4. Domain | Apply the field-specific checklist from `domains/` |
+| 5. Write | `summary.md` from the fixed section template (TL;DR → 배경지식 → … → Glossary) |
+| 6. Verify | `verify.py` traces every number back to the source |
+| 7. Render | `md → typ → pdf` |
+| 8. Report | Paths, ingest method, warnings, accepted exceptions |
 
 ### Grounding
 
@@ -120,6 +121,9 @@ The summary format is built around not making things up:
 - numbers and quotes are copied verbatim; anything inferred is tagged `(추론)` /
   `(inferred)` so it is never presented as the paper's own claim
 - each key claim carries a reference tag (`§4.1, Table 3`)
+- background knowledge from outside the paper is tagged `(배경)` /
+  `(background)`, kept free of remembered numbers and invented citations, and
+  never mixed with the paper's own results
 - `verify.py` then checks the result — it extracts every number in the summary
   and reports the ones it cannot find in the ingested source
 
