@@ -102,6 +102,12 @@ def test_inference_marked_lines_are_skipped():
     assert nums("이 값은 2배 수준이다 (해석)") == []
 
 
+def test_background_marked_lines_are_skipped():
+    """(배경) marks general background knowledge, not a claim from the paper."""
+    assert nums("Th17 세포는 IL-17을 분비한다. (배경)") == []
+    assert nums("Th17 cells secrete IL-17. (background)") == []
+
+
 def test_a_real_claim_on_an_inference_free_line_is_still_extracted():
     """Guard against the skip rules swallowing everything."""
     assert nums("정확도는 88.7% 였다.") == ["88.7"]
