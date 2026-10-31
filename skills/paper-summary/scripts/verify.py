@@ -12,7 +12,7 @@ caught before the summary is handed over.
 
 It is ADVISORY, not a gate: a miss is cheap, a false alarm wastes the reader's
 attention. Anything the skill legitimately writes that is not a quote — the
-reference tags, figure paths, layout attributes, and (추론)/(해석) claims — is
+reference tags, figure paths, layout attributes, and (추론)/(해석)/(배경) claims — is
 excluded by design.
 
 Usage:
@@ -56,7 +56,7 @@ LOCATOR_RE = re.compile(
 )
 
 # A line carrying one of these declares its numbers as the model's own reading.
-INFERENCE_RE = re.compile(r"\(\s*(?:추론|해석|inferred|interpretation)\s*\)", re.IGNORECASE)
+INFERENCE_RE = re.compile(r"\(\s*(?:추론|해석|배경|inferred|interpretation|background)\s*\)", re.IGNORECASE)
 
 
 @dataclass(frozen=True)
